@@ -1,117 +1,98 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Send, Cpu, Shield, Zap, Activity, Database, Lock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Mic, Plus, Menu, Volume2, Share2 } from 'lucide-react';
 
-export default function OmegaGodMode() {
-  const [messages, setMessages] = useState([
-    { role: 'system', content: 'SYSTEM INITIALIZED: OMEGA-X CORE IS ONLINE. READY FOR DOMINATION.' }
-  ]);
-  const [input, setInput] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
-  const chatEndRef = useRef(null);
-
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const handleExecute = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const userMessage = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsProcessing(true);
-
-    setTimeout(() => {
-      const omegaResponse = { 
-        role: 'omega', 
-        content: `ANALYSIS COMPLETE: COMMAND [${input.toUpperCase()}] PROCESSED THROUGH QUANTUM LAYER. STATUS: OPTIMIZED.` 
-      };
-      setMessages(prev => [...prev, omegaResponse]);
-      setIsProcessing(false);
-    }, 1000);
-  };
+export default function AhmohuSystem() {
+  const [isRotating, setIsRotating] = useState(true);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-cyan-400 font-mono p-4 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans flex flex-col p-6 relative overflow-hidden">
       
-      {/* تأثير الشبكة الخلفية 3D */}
-      <div className="absolute inset-0 z-0 opacity-20" 
-           style={{ backgroundImage: 'linear-gradient(#0891b2 1px, transparent 1px), linear-gradient(90px, #0891b2 1px, transparent 1px)', 
-                    backgroundSize: '40px 40px', transform: 'perspective(500px) rotateX(60deg) translateY(-100px)' }}>
+      {/* الشريط العلوي - Header */}
+      <div className="flex justify-between items-center z-10">
+        <div className="flex items-center gap-4">
+          <Menu className="text-zinc-400" size={24} />
+          <h2 className="text-sm font-bold tracking-widest text-zinc-300 uppercase">
+            AHMOHU SYSTEM v2.5 INSTANT
+          </h2>
+        </div>
+        <div className="flex items-center gap-4">
+          <Volume2 size={20} className="text-zinc-400" />
+          <Share2 size={20} className="text-zinc-400" />
+        </div>
       </div>
 
-      {/* الرأس (Header) - تصميم زجاجي */}
-      <header className="relative z-10 backdrop-blur-md bg-black/40 border border-cyan-500/30 p-4 rounded-xl mb-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-                <div className="w-4 h-4 bg-red-600 rounded-full animate-ping absolute"></div>
-                <div className="w-4 h-4 bg-red-500 rounded-full relative shadow-[0_0_15px_#ff0000]"></div>
-            </div>
-            <h1 className="text-2xl font-black tracking-[0.2em] text-white italic">OMEGA<span className="text-cyan-500 underline">X</span></h1>
-          </div>
-          <div className="flex gap-3">
-             <Activity className="text-green-500 animate-pulse" size={18} />
-             <Lock className="text-cyan-500" size={18} />
-          </div>
-        </div>
-        <div className="mt-2 flex gap-4 text-[9px] uppercase font-bold text-cyan-700">
-            <span className="flex items-center gap-1"><Cpu size={10}/> UPTIME: 99.9%</span>
-            <span className="flex items-center gap-1"><Database size={10}/> NODE: DC-WASHINGTON</span>
-        </div>
-      </header>
+      {/* المحتوى الرئيسي - الـ Vinyl Record والاسم */}
+      <div className="flex-1 flex flex-col items-center justify-center z-10 space-y-8">
+        
+        <div className="relative flex items-center justify-center">
+          {/* نص الاسم العريض خلف الأسطوانة */}
+          <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white opacity-90 italic select-none">
+            AHMOHU
+          </h1>
 
-      {/* منطقة الرسائل المحسنة */}
-      <main className="flex-1 overflow-y-auto relative z-10 space-y-6 mb-6 px-2 custom-scrollbar">
-        <AnimatePresence>
-          {messages.map((msg, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, x: msg.role === 'user' ? 50 : -50, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div className={`relative max-w-[90%] p-4 rounded-2xl border transition-all ${
-                msg.role === 'user' 
-                ? 'bg-gradient-to-br from-cyan-900/40 to-black border-cyan-500/50 text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]' 
-                : 'bg-gradient-to-br from-zinc-900/80 to-black border-zinc-700/50 text-cyan-200'
-              }`}>
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-400"></div>
-                <div className="text-[8px] uppercase tracking-tighter opacity-50 mb-2 flex items-center gap-2">
-                   {msg.role === 'user' ? <Shield size={10}/> : <Zap size={10}/>}
-                   {msg.role === 'user' ? 'AUTH_STRATEGIST' : 'OMEGA_AI_CORE'}
+          {/* الأسطوانة الدوارة - Vinyl Record */}
+          <motion.div 
+            className="absolute"
+            animate={{ rotate: isRotating ? 360 : 0 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          >
+            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-black border-4 border-zinc-800 shadow-[0_0_50px_rgba(6,182,212,0.4)] flex items-center justify-center overflow-hidden">
+              {/* تفاصيل الأسطوانة */}
+              <div className="w-full h-full rounded-full border-[10px] border-zinc-900 flex items-center justify-center relative">
+                <div className="w-12 h-12 bg-gradient-to-tr from-cyan-400 via-purple-500 to-red-500 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-black rounded-full"></div>
                 </div>
-                <p className="text-sm md:text-base font-medium leading-relaxed">{msg.content}</p>
+                {/* خطوط لمعان الأسطوانة */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-30"></div>
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-        <div ref={chatEndRef} />
-      </main>
+            </div>
+          </motion.div>
+        </div>
 
-      {/* مدخل الأوامر (Command Input) */}
-      <footer className="relative z-10">
-        <form onSubmit={handleExecute} className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-blue-900 rounded-2xl blur opacity-25 group-focus-within:opacity-75 transition duration-500"></div>
-          <div className="relative bg-black rounded-xl border border-white/10 p-2 flex items-center">
-            <Terminal className="text-cyan-500 ml-2" size={24} />
-            <input 
-              type="text" 
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="ENTER COMMAND TO EXECUTE..."
-              className="flex-1 bg-transparent border-none focus:ring-0 text-white px-4 py-3 text-sm placeholder:text-cyan-900 outline-none"
+        {/* حالة التشغيل */}
+        <div className="text-center space-y-2">
+          <p className="text-cyan-400 font-bold tracking-widest text-xs md:text-sm uppercase">
+            Now Playing: Tactical Deployment
+          </p>
+          <p className="text-zinc-500 text-[10px] md:text-xs font-medium tracking-[0.3em] uppercase">
+            AHMOHU SYSTEM - AI CORE ONLINE
+          </p>
+        </div>
+
+        {/* محلل الصوت - Audio Visualizer Bars */}
+        <div className="flex items-end gap-1 h-12">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="w-1.5 md:w-2 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]"
+              animate={{ height: [10, 40, 20, 45, 15][i % 5] }}
+              transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse", delay: i * 0.05 }}
             />
-            <button type="submit" className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold p-3 rounded-lg transition-transform active:scale-90 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-              <Send size={20} />
-            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* شريط الإدخال السفلي - Input Bar */}
+      <div className="mt-auto z-10">
+        <div className="bg-zinc-900/80 backdrop-blur-xl border border-white/5 rounded-full p-2 flex items-center shadow-2xl">
+          <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-400">
+            <Mic size={22} />
           </div>
-        </form>
-      </footer>
+          <input 
+            type="text" 
+            placeholder="Ask away. Usage Scenario..."
+            className="flex-1 bg-transparent border-none focus:ring-0 text-zinc-300 px-4 py-2 text-sm placeholder:text-zinc-600 outline-none"
+          />
+          <div className="p-2 text-zinc-500">
+            <Plus size={24} />
+          </div>
+        </div>
+      </div>
+
+      {/* خلفية بصرية - تأثير إضاءة خافتة */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full z-0"></div>
     </div>
   );
 }
