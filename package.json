@@ -1,15 +1,26 @@
 {
-  "name": "omega-prime",
-  "version": "1.0.0",
-  "main": "index.js",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.5.0",
-    "dotenv": "^16.3.1",
-    "cors": "^2.8.5"
-  },
+  "name": "omega-prime-system",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.344.0",
+    "framer-motion": "^11.0.8",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }
-
