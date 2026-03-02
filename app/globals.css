@@ -1,0 +1,10 @@
+Enter@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: black;
+  color: #00ffff;
+  margin: 0;
+  font-family: monospace;
+}
